@@ -55,7 +55,7 @@ async function run(): Promise<void> {
             const args = [directory, censoredWords];
             exec.exec("CensorCheck.exe", args);
         } else {
-            const args = ["run", "CensorCheck.dll", directory, censoredWords];
+            const args = ["CensorCheck.dll", directory, censoredWords];
             exec.exec("dotnet", args);
         }
     } catch (error) {
