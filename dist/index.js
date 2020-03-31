@@ -1011,9 +1011,16 @@ function run() {
                     throw Error("Workspace directory doesn't exists in the file system.");
                 }
             }
+            const isWin = process.platform === "win32";
+            const isLinux = process.platform === "linux";
+            if (!isWin && !isLinux) {
+                core.warning("OS is not supported");
+                return;
+            }
+            const exeName = isWin ? "CensorCheck.exe" : "CensorCheck.dll";
             const args = [directory, censoredWords];
             // Execute the CLI with the given arguments.
-            exec.exec("CensorCheck.exe", args);
+            exec.exec(exeName, args);
         }
         catch (error) {
             // If an unhandled exception is thrown
