@@ -1023,7 +1023,7 @@ function run() {
                 exec.exec("CensorCheck.exe", args);
             }
             else {
-                const args = ["run", "CensorCheck.dll", directory, censoredWords];
+                const args = ["CensorCheck.dll", directory, censoredWords];
                 exec.exec("dotnet", args);
             }
         }
