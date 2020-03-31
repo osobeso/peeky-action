@@ -49,19 +49,19 @@ async function run(): Promise<void> {
             core.warning("OS is not supported");
             return;
         }
-
+        let result = 0;
         // Execute the CLI with the given arguments.
         if (isWin) {
             const args = [directory, censoredWords];
-            exec.exec("CensorCheck.exe", args).catch((e) => {
-                throw new Error(e);
-            });
+            result = await exec.exec("CensorCheck.exe", args);
         } else {
             const dllDir = path.join(censorPath, "CensorCheck.dll");
             const args = [dllDir, directory, censoredWords];
-            exec.exec("dotnet", args).catch((e) => {
-                throw new Error(e);
-            });
+            result = await exec.exec("dotnet", args);
+        }
+
+        if (result !== 0) {
+            core.setFailed("Censors found");
         }
     } catch (error) {
         // If an unhandled exception is thrown
