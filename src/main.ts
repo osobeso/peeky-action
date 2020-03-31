@@ -50,7 +50,7 @@ async function run(): Promise<void> {
             return;
         }
 
-        const exeName = isWin ? "CensorCheck.exe" : "CensorCheck.dll";
+        const exeName = isWin ? "CensorCheck.exe" : "dotnet run CensorCheck.dll";
 
         const args = [directory, censoredWords];
 
