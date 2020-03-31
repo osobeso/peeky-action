@@ -6,8 +6,8 @@ import * as path from "path";
 async function run(): Promise<void> {
     try {
         // Add the CLI to the environment path.
-        const cliPath = path.normalize(`${__dirname}\\..\\node_modules\\peeky\\CensorCheck`);
-        core.addPath(cliPath);
+        const censorPath = path.normalize(`${__dirname}\\..\\node_modules\\peeky\\CensorCheck`);
+        core.addPath(censorPath);
 
         // Retrieve the PAT Token and the github workspace.
         // Get required input arguments.
@@ -55,7 +55,8 @@ async function run(): Promise<void> {
             const args = [directory, censoredWords];
             exec.exec("CensorCheck.exe", args);
         } else {
-            const args = ["CensorCheck.dll", directory, censoredWords];
+            const dllDir = path.join(censorPath, "CensorCheck.dll");
+            const args = [dllDir, directory, censoredWords];
             exec.exec("dotnet", args);
         }
     } catch (error) {
