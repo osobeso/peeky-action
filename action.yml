@@ -1,0 +1,10 @@
+name: 'IntelliCode'
+description: 'Github Action used to access IntelliCode services on CI builds.'
+author: 'Microsoft'
+inputs:
+  censored:
+    description: 'A Comma separated value list of the words that should be censored.'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
