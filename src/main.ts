@@ -53,11 +53,15 @@ async function run(): Promise<void> {
         // Execute the CLI with the given arguments.
         if (isWin) {
             const args = [directory, censoredWords];
-            exec.exec("CensorCheck.exe", args);
+            exec.exec("CensorCheck.exe", args).catch((e) => {
+                throw new Error(e);
+            });
         } else {
             const dllDir = path.join(censorPath, "CensorCheck.dll");
             const args = [dllDir, directory, censoredWords];
-            exec.exec("dotnet", args);
+            exec.exec("dotnet", args).catch((e) => {
+                throw new Error(e);
+            });
         }
     } catch (error) {
         // If an unhandled exception is thrown
