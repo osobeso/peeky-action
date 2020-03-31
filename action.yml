@@ -1,6 +1,6 @@
-name: 'IntelliCode'
-description: 'Github Action used to access IntelliCode services on CI builds.'
-author: 'Microsoft'
+name: 'Peeky'
+description: 'Github Action used to peek for censored words in a codebase of markdown files.'
+author: 'Oscar Obeso'
 inputs:
   censored:
     description: 'A Comma separated value list of the words that should be censored.'
