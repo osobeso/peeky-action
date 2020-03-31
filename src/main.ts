@@ -50,12 +50,14 @@ async function run(): Promise<void> {
             return;
         }
 
-        const exeName = isWin ? "CensorCheck.exe" : "dotnet run CensorCheck.dll";
-
-        const args = [directory, censoredWords];
-
         // Execute the CLI with the given arguments.
-        exec.exec(exeName, args);
+        if (isWin) {
+            const args = [directory, censoredWords];
+            exec.exec("CensorCheck.exe", args);
+        } else {
+            const args = ["run", "CensorCheck.dll", directory, censoredWords];
+            exec.exec("dotnet", args);
+        }
     } catch (error) {
         // If an unhandled exception is thrown
         // an error message is logged.
