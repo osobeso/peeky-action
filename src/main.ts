@@ -22,9 +22,7 @@ async function run(): Promise<void> {
                 throw Error;
             }
         } catch (error) {
-            core.warning(
-                `Could not find censored keywords.`,
-            );
+            core.warning(`Could not find censored keywords.`);
             return;
         }
 
