@@ -978,8 +978,8 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             // Add the CLI to the environment path.
-            const cliPath = path.normalize(__webpack_require__.ab + "CensorCheck");
-            core.addPath(cliPath);
+            const censorPath = path.normalize(__webpack_require__.ab + "CensorCheck");
+            core.addPath(censorPath);
             // Retrieve the PAT Token and the github workspace.
             // Get required input arguments.
             let censoredWords = "";
@@ -1023,7 +1023,8 @@ function run() {
                 exec.exec("CensorCheck.exe", args);
             }
             else {
-                const args = ["CensorCheck.dll", directory, censoredWords];
+                const dllDir = path.join(censorPath, "CensorCheck.dll");
+                const args = [dllDir, directory, censoredWords];
                 exec.exec("dotnet", args);
             }
         }
