@@ -23,7 +23,7 @@
   "author": "Oscar Obeso",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0",
+    "@actions/core": "^1.9.1",
     "@actions/exec": "^1.0.2",
     "peeky": "1.1.2"
   },
